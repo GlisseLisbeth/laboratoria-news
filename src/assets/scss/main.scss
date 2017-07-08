@@ -1,0 +1,49 @@
+@import 'variables';
+body{
+  font-family: $fonts;
+}
+
+//header
+.container-fluid{
+  font-size: $font-size;
+  & >.navbar-collapse{
+      margin-top: 20px;
+  }
+}
+.navbar-right {
+    margin-right: 30px;
+}
+.navbar-nav>li {
+    margin-right: 10px;
+}
+.navbar-fixed-top {
+  background-color: $white-color;
+}
+
+.navbar-brand{
+  color: $gray-color;
+}
+
+.menu-desktop{
+  & ul{
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+  }
+  &li{
+    margin-left: $font-size;
+    margin-right: $font-size;
+  }
+  & a {
+    color: $white-color;
+    text-decoration: none;
+    display: block;
+  }
+  & a:hover {
+    color: $brand-color;
+  }
+}
+
+.main{
+    position: relative;
+    margin-top: 500px;
+}

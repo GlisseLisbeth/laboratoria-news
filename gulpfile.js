@@ -66,18 +66,15 @@ gulp.task("sass",function () {
 
 gulp.task("js",function () {
   var js = gulp.src([
-                     sources.rootJs+'get-json.js',
-                     sources.rootJs+'header.js',
-                     sources.rootJs+'app.js'
+                      sources.rootJs+'app.js',
+                      sources.rootJs+'header.js',
+                      sources.rootJs+'news.js'
                    ])
       .pipe(browserify())
       .pipe(concat("bundle.js"))
       .on('error', function (err) { util.log(util.colors.red('[Error]'), err.toString()); })
       .pipe(gulp.dest(config.dist + paths.assets +"js"))
       .pipe(notify('gulp js terminada'));
-      var bootrstrap = gulp.src('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js')
-                        .pipe(gulp.dest(config.dist + paths.assets + 'vendor'));
-      return merge(js, bootrstrap);
 });
 gulp.task("img", function(){
   gulp.src(sources.rootImg).pipe(gulp.dest(config.dist + paths.assets + 'img'));

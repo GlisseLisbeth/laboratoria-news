@@ -2,8 +2,17 @@ var express = require("express");
 var api = require("./api");
 const app = express();
 const path = require("path");
+const bodyParser = require('body-parser');
 const port = process.env.PORT || process.env.IP || 3000;
-  
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const router = express.Router();
+
+router.get('/', function(req, res) {
+    res.json({ message: 'Conectando al api!' });
+});
 
 app.get('/api/news/:news_id', function (req, res) {
     let news = api.news(req.params.news_id);
@@ -38,5 +47,6 @@ app.get('/', (req, res) => {
 
 app.use('/assets', express.static(path.join(__dirname,'/node_modules')));
 app.use('/assets', express.static(path.join(__dirname + '/public','/assets')));
+app.use('/api', router);
 
 console.log('Express server started on port %s', port);
